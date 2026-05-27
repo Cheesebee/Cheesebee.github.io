@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF 미래 수익률 연구소</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    font-family: "맑은 고딕", "돋움", sans-serif;
+    font-size: 100%;
+    color: #10203f;
+    background: linear-gradient(180deg, #eaf3ff 0%, #f4f8ff 42%, #eef6fb 100%);
+}
+[class*="c_"] {
+    float: left;
+    padding: 12px;
+}
+
+/* 스마트폰 기본 설정 */
+[class*="c_"] {
+    width: 100%;
+}
+
+/* 태블릿 화면 */
+@media only screen and (min-width: 600px) {
+    .c_m_1 {width: 8.33%;}
+    .c_m_2 {width: 16.66%;}
+    .c_m_3 {width: 25%;}
+    .c_m_4 {width: 33.33%;}
+    .c_m_5 {width: 41.66%;}
+    .c_m_6 {width: 50%;}
+    .c_m_7 {width: 58.33%;}
+    .c_m_8 {width: 66.66%;}
+    .c_m_9 {width: 75%;}
+    .c_m_10 {width: 83.33%;}
+    .c_m_11 {width: 91.66%;}
+    .c_m_12 {width: 100%;}
+}
+
+/* 데스크톱 화면 */
+@media only screen and (min-width: 768px) {
+    .c_1 {width: 8.33%;}
+    .c_2 {width: 16.66%;}
+    .c_3 {width: 25%;}
+    .c_4 {width: 33.33%;}
+    .c_5 {width: 41.66%;}
+    .c_6 {width: 50%;}
+    .c_7 {width: 58.33%;}
+    .c_8 {width: 66.66%;}
+    .c_9 {width: 75%;}
+    .c_10 {width: 83.33%;}
+    .c_11 {width: 91.66%;}
+    .c_12 {width: 100%;}
+}
+
+header {
+    min-height: 86px;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background-color: #011c4c;
+    border-bottom: solid 1px #011c4c;
+    box-shadow: 0 8px 22px rgba(1, 28, 76, 0.24);
+}
+header h1 {
+    line-height: 0;
+    flex: 0 0 auto;
+}
+.logo {
+    width: 240px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    background-color: #011c4c;
+}
+nav {
+    flex: 1;
+    text-align: right;
+}
+nav li {
+    display: block;
+    margin: 6px 0;
+    padding: 11px 14px;
+    border: solid 1px rgba(255, 255, 255, 0.32);
+    border-radius: 6px;
+    font-weight: bold;
+    color: #eef6ff;
+    background-color: rgba(255, 255, 255, 0.12);
+    text-align: center;
+}
+nav li:hover {
+    color: #08245f;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+@media only screen and (min-width: 768px) {
+    nav li {
+        display: inline-block;
+        margin: 0 0 0 8px;
+        padding: 9px 16px;
+        min-width: 108px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    header {
+        display: block;
+    }
+    .logo {
+        width: 220px;
+        height: 55px;
+    }
+    nav {
+        margin-top: 14px;
+        text-align: left;
+    }
+}
+
+#hero {
+    padding: 46px 40px 18px 40px;
+    background:
+        linear-gradient(90deg, rgba(234, 243, 255, 0.98) 0%, rgba(234, 243, 255, 0.82) 48%, rgba(216, 236, 255, 0.35) 100%),
+        repeating-linear-gradient(90deg, rgba(12, 107, 143, 0.09) 0, rgba(12, 107, 143, 0.09) 1px, transparent 1px, transparent 28px);
+}
+#hero h2 {
+    font-size: 2.6em;
+    line-height: 120%;
+    margin-bottom: 18px;
+    color: #071a3d;
+}
+#hero p {
+    font-size: 1.05em;
+    line-height: 170%;
+    color: #4b5f80;
+}
+
+#search-box {
+    margin: 10px 40px 8px 40px;
+    padding: 24px;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f7ff 100%);
+    border: solid 1px #b9cce8;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(16, 32, 63, 0.08);
+}
+#search-box h3 {
+    margin-bottom: 8px;
+    font-size: 1.25em;
+    color: #08245f;
+}
+#search-box p {
+    color: #4b5f80;
+    line-height: 160%;
+}
+.query-links {
+    margin-top: 14px;
+}
+.query-links a {
+    display: inline-block;
+    margin: 6px 6px 0 0;
+    padding: 12px 18px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: bold;
+    background: linear-gradient(90deg, #08245f, #0a58b5);
+}
+.query-links a:hover {
+    background: linear-gradient(90deg, #0c6b8f, #0c7c43);
+}
+
+.result-card,
+.etf-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+    border: solid 1px #c9d9ef;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(16, 32, 63, 0.06);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.result-card:hover,
+.etf-card:hover {
+    border-color: #8fb3df;
+    box-shadow: 0 16px 30px rgba(16, 32, 63, 0.14);
+}
+.result-card {
+    min-height: 128px;
+    padding: 28px;
+    text-align: center;
+    border-top: solid 5px #0a58b5;
+}
+.result-card h3 {
+    font-size: 1em;
+    color: #263958;
+}
+.result-card p {
+    margin-top: 12px;
+    font-size: 2.3em;
+    font-weight: bold;
+    color: #0c7c43;
+}
+
+#main-title {
+    clear: both;
+    padding: 22px 40px 0 40px;
+}
+#main-title h2 {
+    font-size: 1.35em;
+}
+
+.etf-card {
+    min-height: 320px;
+    padding: 22px;
+    border-top: solid 5px #0c6b8f;
+}
+.etf-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+.etf-card .sub {
+    font-size: 0.9em;
+    color: #61718c;
+}
+.chart {
+    height: 96px;
+    margin: 18px 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.chart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.etf-card p {
+    min-height: 62px;
+    line-height: 160%;
+    color: #334766;
+}
+.tag {
+    display: inline-block;
+    margin: 12px 5px 0 0;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #0c6b3d;
+    background-color: #e8f8ef;
+}
+.risk {
+    color: #b21f2d;
+    background-color: #ffe9eb;
+}
+.stable {
+    color: #0a58b5;
+    background-color: #eaf3ff;
+}
+
+footer {
+    clear: both;
+    min-height: 60px;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #08245f;
+}
+</style>
+</head>
+<body>
+  <header class="c_12">
+    <h1><a href="index.html"><img class="logo" src="img/logo.png" alt="ETF 미래 수익률 연구소"></a></h1>
+    <nav>
+      <ul>
+        <li><a href="explore.html">ETF 탐색</a></li>
+        <li><a href="long-term.html">장기 수익률</a></li>
+        <li><a href="portfolio.html">포트폴리오 비교</a></li>
+        <li><a href="#etf-list">투자 성향 분석</a></li>
+        <li><a href="market-report.html">시장 리포트</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero" class="c_12">
+    <h2>장기투자 ETF 예상 수익률을<br>한눈에 비교하세요</h2>
+    <p>QLD, TQQQ, SPY, SCHD 등 주요 ETF의 장기 성과를 차트와 예상 수익률로 확인할 수 있습니다.</p>
+  </section>
+
+  <section id="search-box" class="c_12">
+    <h3>ETF별 수익률 조회</h3>
+    <p>조회할 ETF를 선택하면 5년, 10년, 20년 실제 수익률 결과 페이지로 이동합니다.</p>
+    <div class="query-links">
+      <a href="returns-qld.html">QLD 조회</a>
+      <a href="returns-tqqq.html">TQQQ 조회</a>
+      <a href="returns-spy.html">SPY 조회</a>
+      <a href="returns-schd.html">SCHD 조회</a>
+      <a href="returns-qqq.html">QQQ 조회</a>
+      <a href="returns-voo.html">VOO 조회</a>
+    </div>
+  </section>
+
+  <section class="c_m_4 c_4">
+    <div class="result-card">
+      <h3>5년 예상</h3>
+      <p>+75%</p>
+    </div>
+  </section>
+  <section class="c_m_4 c_4">
+    <div class="result-card">
+      <h3>10년 예상</h3>
+      <p>+180%</p>
+    </div>
+  </section>
+  <section class="c_m_4 c_4">
+    <div class="result-card">
+      <h3>20년 예상</h3>
+      <p>+420%</p>
+    </div>
+  </section>
+
+  <section id="main-title" class="c_12">
+    <h2>주요 ETF 한눈에 보기</h2>
+  </section>
+
+  <section id="etf-list" class="c_m_6 c_3">
+    <article class="etf-card">
+      <h3>QLD</h3>
+      <p class="sub">ProShares Ultra QQQ</p>
+      <div class="chart"><img src="img/qld chart.jpg" alt="QLD 차트"></div>
+      <p>나스닥100 지수의 일간 수익률을 2배 추종하는 ETF로 성장성을 강조합니다.</p>
+      <span class="tag">성장형</span>
+      <span class="tag risk">고위험</span>
+    </article>
+  </section>
+
+  <section class="c_m_6 c_3">
+    <article class="etf-card">
+      <h3>TQQQ</h3>
+      <p class="sub">ProShares UltraPro QQQ</p>
+      <div class="chart"><img src="img/tqqq chart.jpg" alt="TQQQ 차트"></div>
+      <p>나스닥100 지수의 일간 수익률을 3배 추종하는 고위험 고수익형 ETF입니다.</p>
+      <span class="tag">성장형</span>
+      <span class="tag risk">공격형</span>
+    </article>
+  </section>
+
+  <section class="c_m_6 c_3">
+    <article class="etf-card">
+      <h3>SPY</h3>
+      <p class="sub">SPDR S&amp;P 500 ETF</p>
+      <div class="chart"><img src="img/spy chart.jpg" alt="SPY 차트"></div>
+      <p>S&amp;P 500 지수를 추종하는 대표 ETF로 미국 대형주 시장을 반영합니다.</p>
+      <span class="tag stable">안정형</span>
+      <span class="tag">장기보유</span>
+    </article>
+  </section>
+
+  <section class="c_m_6 c_3">
+    <article class="etf-card">
+      <h3>SCHD</h3>
+      <p class="sub">Schwab U.S. Dividend Equity ETF</p>
+      <div class="chart"><img src="img/schd chart.jpg" alt="SCHD 차트"></div>
+      <p>우량 배당주에 투자하여 배당 수익과 장기 성장을 동시에 추구합니다.</p>
+      <span class="tag">배당형</span>
+      <span class="tag stable">안정형</span>
+    </article>
+  </section>
+
+  <section class="c_m_6 c_3">
+    <article class="etf-card">
+      <h3>QQQ</h3>
+      <p class="sub">Invesco QQQ Trust</p>
+      <div class="chart"><img src="img/qqq chart.jpg" alt="QQQ 차트"></div>
+      <p>나스닥100 지수를 추종하는 대표 성장형 ETF로 기술주 비중이 높습니다.</p>
+      <span class="tag">성장형</span>
+      <span class="tag">장기보유</span>
+    </article>
+  </section>
+
+  <section class="c_m_6 c_3">
+    <article class="etf-card">
+      <h3>VOO</h3>
+      <p class="sub">Vanguard S&amp;P 500 ETF</p>
+      <div class="chart"><img src="img/voo chart.jpg" alt="VOO 차트"></div>
+      <p>S&amp;P 500 지수를 추종하며 낮은 비용과 분산투자 장점을 가진 ETF입니다.</p>
+      <span class="tag stable">안정형</span>
+      <span class="tag">장기보유</span>
+    </article>
+  </section>
+
+  <footer class="c_12">
+    COPYRIGHT(C) ETF 미래 수익률 연구소. All Rights Reserved.
+  </footer>
+</body>
+</html>

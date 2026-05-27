@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오 비교</title>
+<link rel="stylesheet" href="subpage.css">
+<style>
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.type-card {
+    min-height: 560px;
+    padding: 24px;
+    border: solid 1px #c9d9ef;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+    box-shadow: 0 8px 20px rgba(16, 32, 63, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.type-card:hover {
+    box-shadow: 0 16px 30px rgba(16, 32, 63, 0.14);
+}
+.type-card.stable-type {
+    border-top: solid 6px #0a58b5;
+}
+.type-card.growth-type {
+    border-top: solid 6px #0c7c43;
+}
+.type-card.attack-type {
+    border-top: solid 6px #b21f2d;
+}
+.type-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.7em;
+    color: #08245f;
+}
+.type-card > p {
+    min-height: 88px;
+    line-height: 165%;
+    color: #334766;
+}
+.etf-boxes {
+    min-height: 315px;
+}
+.etf-mini {
+    margin-top: 16px;
+    padding: 16px;
+    border: solid 1px #d9e2ef;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+.etf-mini:hover {
+    border-color: #8fb3df;
+    background-color: #f3f8ff;
+}
+.etf-mini h4 {
+    margin-bottom: 8px;
+    font-size: 1.25em;
+    color: #071a3d;
+}
+.etf-mini p {
+    line-height: 155%;
+    color: #4b5f80;
+}
+.etf-mini strong,
+.type-card > p strong,
+.note-box strong {
+    color: #08245f;
+}
+.ratio {
+    margin-top: auto;
+    padding-top: 18px;
+}
+.ratio li {
+    margin-top: 8px;
+    line-height: 150%;
+}
+.bar {
+    height: 9px;
+    margin-top: 6px;
+    border-radius: 99px;
+    background-color: #d9e2ef;
+    overflow: hidden;
+}
+.bar span {
+    display: block;
+    height: 100%;
+    border-radius: 99px;
+}
+.stable-type .bar span {
+    background-color: #0a58b5;
+}
+.growth-type .bar span {
+    background-color: #0c7c43;
+}
+.attack-type .bar span {
+    background-color: #b21f2d;
+}
+.note-box {
+    margin-top: 24px;
+    padding: 20px;
+    border: solid 1px #c9d9ef;
+    border-left: solid 6px #0a58b5;
+    border-radius: 8px;
+    background-color: #ffffff;
+    line-height: 165%;
+    color: #334766;
+}
+@media only screen and (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    .type-card {
+        min-height: 0;
+    }
+    .type-card > p {
+        min-height: 0;
+    }
+    .etf-boxes {
+        min-height: 0;
+    }
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html"><img class="logo" src="img/logo.png" alt="ETF 미래 수익률 연구소"></a></h1>
+    <nav>
+      <a href="index.html">홈</a>
+      <a href="explore.html">ETF 탐색</a>
+      <a href="long-term.html">장기 수익률</a>
+      <a class="active" href="portfolio.html">포트폴리오 비교</a>
+      <a href="market-report.html">시장 리포트</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="page-title">
+      <h2>포트폴리오 비교</h2>
+      <p>ETF를 수익률만으로 비교하지 않고, 투자 성향에 따라 안정형, 성장형, 공격형 세 가지로 나누어 분석합니다.</p>
+    </section>
+
+    <section class="portfolio-grid">
+      <article class="type-card stable-type">
+        <h3>안정형</h3>
+        <p>큰 변동성보다 <strong>장기 보유 안정성</strong>과 <strong>분산 투자</strong>를 중요하게 보는 유형입니다. 시장 대표 ETF와 배당 ETF가 잘 어울립니다.</p>
+
+        <div class="etf-boxes">
+          <div class="etf-mini">
+            <h4>SPY</h4>
+            <p><strong>S&amp;P 500 대표 ETF</strong>로 미국 대형주에 넓게 분산 투자합니다. 장기투자의 기준점으로 활용하기 좋습니다.</p>
+          </div>
+          <div class="etf-mini">
+            <h4>VOO</h4>
+            <p>S&amp;P 500을 추종하는 <strong>저비용 ETF</strong>입니다. 비용을 낮추고 장기 보유하려는 투자자에게 적합합니다.</p>
+          </div>
+          <div class="etf-mini">
+            <h4>SCHD</h4>
+            <p><strong>우량 배당주 중심 ETF</strong>로 배당 수익과 안정적인 흐름을 함께 기대할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <ul class="ratio">
+          <li>안정성 <div class="bar"><span style="width: 90%;"></span></div></li>
+          <li>성장성 <div class="bar"><span style="width: 55%;"></span></div></li>
+          <li>위험도 <div class="bar"><span style="width: 35%;"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="type-card growth-type">
+        <h3>성장형</h3>
+        <p>미래 성장 가능성이 높은 산업과 <strong>기술주 비중</strong>을 중요하게 보는 유형입니다. 변동성은 있지만 <strong>장기 성장성</strong>을 기대합니다.</p>
+
+        <div class="etf-boxes">
+          <div class="etf-mini">
+            <h4>QQQ</h4>
+            <p>나스닥100을 추종하는 <strong>대표 성장 ETF</strong>입니다. 기술주 중심 장기투자에 적합합니다.</p>
+          </div>
+          <div class="etf-mini">
+            <h4>QLD</h4>
+            <p>나스닥100을 <strong>2배로 추종</strong>하는 레버리지 ETF입니다. 성장성을 더 강하게 반영하지만 위험도도 높습니다.</p>
+          </div>
+          <div class="etf-mini">
+            <h4>SPY</h4>
+            <p>성장형 포트폴리오에서 <strong>변동성을 낮추는 보조 자산</strong>으로 함께 활용할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <ul class="ratio">
+          <li>안정성 <div class="bar"><span style="width: 58%;"></span></div></li>
+          <li>성장성 <div class="bar"><span style="width: 88%;"></span></div></li>
+          <li>위험도 <div class="bar"><span style="width: 62%;"></span></div></li>
+        </ul>
+      </article>
+
+      <article class="type-card attack-type">
+        <h3>공격형</h3>
+        <p><strong>높은 변동성</strong>을 감수하고 큰 수익률을 노리는 유형입니다. 레버리지 ETF 비중이 높아 <strong>손실 관리</strong>가 매우 중요합니다.</p>
+
+        <div class="etf-boxes">
+          <div class="etf-mini">
+            <h4>TQQQ</h4>
+            <p>나스닥100을 <strong>3배로 추종</strong>하는 ETF입니다. 상승장에서는 강하지만 하락장에서는 손실이 빠르게 커질 수 있습니다.</p>
+          </div>
+          <div class="etf-mini">
+            <h4>QLD</h4>
+            <p><strong>2배 레버리지 ETF</strong>로 TQQQ보다 부담은 낮지만 일반 ETF보다 변동성이 큽니다.</p>
+          </div>
+          <div class="etf-mini">
+            <h4>QQQ</h4>
+            <p>공격형 포트폴리오에서 <strong>레버리지 비중을 조절하는 완충 역할</strong>로 활용할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <ul class="ratio">
+          <li>안정성 <div class="bar"><span style="width: 25%;"></span></div></li>
+          <li>성장성 <div class="bar"><span style="width: 98%;"></span></div></li>
+          <li>위험도 <div class="bar"><span style="width: 95%;"></span></div></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="note-box">
+      <strong>안정형</strong>은 장기 보유와 분산 투자에 초점을 맞추고, <strong>성장형</strong>은 기술주와 시장 성장성을 함께 고려합니다. <strong>공격형</strong>은 높은 수익률을 기대할 수 있지만 손실 폭도 커질 수 있으므로 전체 자산 중 일부 비중으로 조절하는 것이 좋습니다.
+    </section>
+  </main>
+
+  <footer>
+    COPYRIGHT(C) ETF 미래 수익률 연구소. All Rights Reserved.
+  </footer>
+</body>
+</html>
