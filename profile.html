@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투자 성향 분석</title>
+<link rel="stylesheet" href="subpage.css">
+<style>
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.profile-card {
+    min-height: 560px;
+    padding: 24px;
+    border: solid 1px #c9d9ef;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+    box-shadow: 0 8px 20px rgba(16, 32, 63, 0.06);
+}
+.profile-card.safe { border-top: solid 6px #0a58b5; }
+.profile-card.balance { border-top: solid 6px #0c7c43; }
+.profile-card.risk-type { border-top: solid 6px #b21f2d; }
+.profile-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.6em;
+    color: #08245f;
+}
+.profile-card p {
+    line-height: 165%;
+    color: #334766;
+}
+.question {
+    margin: 16px 0;
+    padding: 14px;
+    border-radius: 8px;
+    background-color: #eaf3ff;
+    line-height: 160%;
+    color: #263958;
+    font-weight: bold;
+}
+.recommend {
+    margin-top: 16px;
+    padding: 16px;
+    border: solid 1px #d9e2ef;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+.recommend h4 {
+    margin-bottom: 10px;
+    color: #071a3d;
+}
+.recommend li {
+    padding: 8px 0;
+    border-bottom: solid 1px #d9e2ef;
+    line-height: 150%;
+}
+.recommend strong,
+.profile-card p strong {
+    color: #08245f;
+}
+.guide-box {
+    margin-top: 24px;
+    padding: 20px;
+    border: solid 1px #c9d9ef;
+    border-left: solid 6px #0a58b5;
+    border-radius: 8px;
+    background-color: #ffffff;
+    line-height: 165%;
+    color: #334766;
+}
+.guide-box strong {
+    color: #08245f;
+}
+@media only screen and (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-card {
+        min-height: 0;
+    }
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html"><img class="logo" src="./img/logo.png" alt="ETF 미래 수익률 연구소"></a></h1>
+    <nav>
+      <a href="index.html">홈</a>
+      <a href="explore.html">ETF 탐색</a>
+      <a href="long-term.html">장기 수익률</a>
+      <a href="portfolio.html">포트폴리오 비교</a>
+      <a class="active" href="profile.html">투자 성향 분석</a>
+      <a href="market-report.html">시장 리포트</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="page-title">
+      <h2>투자 성향 분석</h2>
+      <p>자신의 투자 성향에 가까운 문장을 보고, 그 성향에 어울리는 ETF를 확인하는 페이지입니다.</p>
+    </section>
+
+    <section class="profile-grid">
+      <article class="profile-card safe">
+        <h3>안정 중시형</h3>
+        <p><strong>원금 손실이 가장 두렵고</strong>, 큰 수익보다 안정적인 흐름을 더 중요하게 생각하는 유형입니다.</p>
+        <div class="question">“나는 수익률이 조금 낮아도 손실 폭이 작은 ETF가 좋다.”</div>
+        <div class="recommend">
+          <h4>추천 ETF</h4>
+          <ul>
+            <li><strong>VOO:</strong> S&amp;P 500 저비용 장기투자 ETF</li>
+            <li><strong>SPY:</strong> 미국 대형주 시장 대표 ETF</li>
+            <li><strong>SCHD:</strong> 배당과 안정성을 함께 보는 ETF</li>
+          </ul>
+        </div>
+        <span class="tag stable">낮은 위험</span>
+        <span class="tag">장기보유</span>
+      </article>
+
+      <article class="profile-card balance">
+        <h3>성장 추구형</h3>
+        <p><strong>일정 수준의 변동성은 감수</strong>할 수 있고, 장기적으로 시장보다 높은 성장을 기대하는 유형입니다.</p>
+        <div class="question">“나는 조금 흔들려도 성장 가능성이 높은 ETF에 투자하고 싶다.”</div>
+        <div class="recommend">
+          <h4>추천 ETF</h4>
+          <ul>
+            <li><strong>QQQ:</strong> 나스닥100 기술주 중심 ETF</li>
+            <li><strong>SPY:</strong> 성장형 포트폴리오의 안정 보조 ETF</li>
+            <li><strong>QLD:</strong> 성장성을 더 강하게 반영하는 2배 ETF</li>
+          </ul>
+        </div>
+        <span class="tag">성장형</span>
+        <span class="tag">중간 위험</span>
+      </article>
+
+      <article class="profile-card risk-type">
+        <h3>공격 투자형</h3>
+        <p><strong>위험을 감수하더라도 고수익</strong>을 노리고, 하락장 변동성을 버틸 수 있는 유형입니다.</p>
+        <div class="question">“나는 큰 손실 가능성을 감수하더라도 높은 수익률을 노리고 싶다.”</div>
+        <div class="recommend">
+          <h4>추천 ETF</h4>
+          <ul>
+            <li><strong>TQQQ:</strong> 나스닥100 3배 레버리지 ETF</li>
+            <li><strong>QLD:</strong> 나스닥100 2배 레버리지 ETF</li>
+            <li><strong>QQQ:</strong> 레버리지 비중 조절용 성장 ETF</li>
+          </ul>
+        </div>
+        <span class="tag risk">높은 위험</span>
+        <span class="tag risk">레버리지</span>
+      </article>
+    </section>
+
+    <section class="guide-box">
+      <strong>활용 방법:</strong> 안정 중시형은 SPY, VOO, SCHD처럼 변동성이 상대적으로 낮은 ETF를 중심으로 보고, 성장 추구형은 QQQ와 일부 QLD를 함께 비교할 수 있습니다. 공격 투자형은 TQQQ와 QLD처럼 레버리지 ETF를 활용할 수 있지만, 전체 자산 중 일부 비중으로 조절하는 것이 좋습니다.
+    </section>
+  </main>
+
+  <footer>
+    COPYRIGHT(C) ETF 미래 수익률 연구소. All Rights Reserved.
+  </footer>
+</body>
+</html>
