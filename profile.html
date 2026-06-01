@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투자 성향 분석</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="c_12">
+  <h1><a href="index.html"><img class="logo" src="./img/logo.png" alt="ETF 미래 수익률 연구소"></a></h1>
+  <nav>
+  <ul>
+    <li><a href="explore.html">ETF 탐색</a></li>
+    <li><a href="long-term.html">장기 수익률</a></li>
+    <li><a href="portfolio.html">포트폴리오 비교</a></li>
+    <li><a href="profile.html">투자 성향 분석</a></li>
+    <li><a href="market-report.html">시장 리포트</a></li>
+  </ul>
+</nav>
+</header>
+<aside id="menu" class="c_m_3 c_3">
+  <nav id="side_dropdown">
+    <ul>
+      <li><a href="#">ETF 수익률 조회</a>
+        <ul>
+          <li><a href="returns-qld.html">QLD 조회</a></li>
+          <li><a href="returns-tqqq.html">TQQQ 조회</a></li>
+          <li><a href="returns-spy.html">SPY 조회</a></li>
+          <li><a href="returns-schd.html">SCHD 조회</a></li>
+          <li><a href="returns-qqq.html">QQQ 조회</a></li>
+          <li><a href="returns-voo.html">VOO 조회</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</aside>
+<main class="c_m_9 c_6">
+  <section class="intro-box">
+    <h2>투자 성향 분석</h2>
+    <p>아래 이미지는 투자 성향을 위험도에 따라 1단계부터 6단계까지 나눈 표입니다. 왼쪽에 가까울수록 높은 위험을 감수하는 성향이고, 오른쪽에 가까울수록 안정성을 중요하게 보는 성향입니다.</p>
+    <figure class="risk-image">
+      <figcaption>위험도 분류표</figcaption>
+      <img src="./img/risk.gif" alt="투자 위험도 분류표">
+    </figure>
+  </section>
+
+  <section>
+    <article class="card type-attack">
+      <h3>성장형</h3>
+      <p>이미지에서 가장 높은 위험 구간에 해당하는 성향입니다. 큰 손실 가능성을 감수하더라도 높은 수익률을 기대하는 투자자에게 가깝습니다.</p>
+      <ul>
+        <li><b>위험도:</b> 매우 높은 위험</li>
+        <li><b>추천 ETF:</b> TQQQ, QLD</li>
+        <li><b>활용 방법:</b> 전체 자산 중 일부만 투자하고, 하락장에서는 무리한 추가 매수보다 분할 매수 기준을 정하는 것이 좋습니다.</li>
+      </ul>
+    </article>
+
+    <article class="card type-attack">
+      <h3>성장추구형</h3>
+      <p>높은 수익을 원하지만 성장형보다는 위험을 조금 낮추고 싶은 성향입니다. 기술주 중심 ETF와 일부 레버리지 ETF를 함께 비교할 수 있습니다.</p>
+      <ul>
+        <li><b>위험도:</b> 높은 위험</li>
+        <li><b>추천 ETF:</b> QQQ, QLD</li>
+        <li><b>활용 방법:</b> QQQ를 중심으로 두고 QLD 비중을 작게 섞으면 성장성과 위험을 함께 조절할 수 있습니다.</li>
+      </ul>
+    </article>
+
+    <article class="card type-growth">
+      <h3>위험중립형</h3>
+      <p>수익률과 안정성을 모두 고려하는 중간 성향입니다. 지나치게 공격적인 상품보다는 대표 지수 ETF와 성장형 ETF를 함께 볼 수 있습니다.</p>
+      <ul>
+        <li><b>위험도:</b> 보통 위험</li>
+        <li><b>추천 ETF:</b> SPY, QQQ, VOO</li>
+        <li><b>활용 방법:</b> SPY나 VOO로 기본을 잡고 QQQ를 추가해 성장성을 보완하는 방식이 어울립니다.</li>
+      </ul>
+    </article>
+
+    <article class="card type-stable">
+      <h3>안정추구형</h3>
+      <p>원금 손실을 크게 두려워하지는 않지만, 높은 변동성은 부담스러운 성향입니다. 배당형 ETF나 시장 대표 ETF가 잘 맞습니다.</p>
+      <ul>
+        <li><b>위험도:</b> 낮은 위험</li>
+        <li><b>추천 ETF:</b> SPY, VOO, SCHD</li>
+        <li><b>활용 방법:</b> 장기 보유를 기본으로 하고, 배당과 분산투자를 함께 고려합니다.</li>
+      </ul>
+    </article>
+
+    <article class="card type-stable">
+      <h3>안정형</h3>
+      <p>이미지에서 가장 낮은 위험 구간에 가까운 성향입니다. 높은 수익률보다 안정적인 흐름과 손실 관리가 더 중요합니다.</p>
+      <ul>
+        <li><b>위험도:</b> 매우 낮은 위험</li>
+        <li><b>추천 ETF:</b> VOO, SCHD</li>
+        <li><b>활용 방법:</b> 레버리지 ETF보다는 장기 분산투자와 배당 수익을 중심으로 접근하는 것이 좋습니다.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="note-box">
+    <p><b>정리:</b> 성장형에 가까울수록 QLD, TQQQ처럼 변동성이 큰 ETF를 볼 수 있고, 안정형에 가까울수록 SPY, VOO, SCHD처럼 분산투자와 배당을 중시하는 ETF가 어울립니다.</p>
+  </section>
+</main>
+<aside id="photos" class="c_m_12 c_3">
+  <figure>
+    <figcaption>시장 지수</figcaption>
+    <img src="./img/indices.jpg" alt="시장 지수 이미지">
+  </figure>
+  <figure>
+    <figcaption>원자재 시장</figcaption>
+    <img src="./img/commodities.jpg" alt="원자재 시장 이미지">
+  </figure>
+</aside>
+<footer class="c_12">COPYRIGHT(C) ETF 미래 수익률 연구소. All Rights Reserved.</footer>
+</body>
+</html>
